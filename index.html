@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareMan Finance</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background: #000;
+            color: #fff;
+            padding: 1em 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 1em;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            padding: 6em 1em;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+            color: #000;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .cta-button {
+            background: #28a745;
+            color: #fff;
+            padding: 1em 2em;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 1em 0.5em;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #218838;
+        }
+        section {
+            padding: 4em 2em;
+            text-align: center;
+            background: #fff;
+            margin: 1em 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section:nth-child(even) {
+            background: #e9f7ef;
+        }
+        h2 {
+            color: #000;
+            margin-bottom: 1em;
+        }
+        .service, .pricing, .about, .contact, .wallet {
+            margin: 2em 0;
+        }
+        .service img, .pricing img, .about img, .contact img, .wallet img {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            margin: 1em 0;
+        }
+        form input, form textarea {
+            width: 80%;
+            max-width: 500px;
+            padding: 1em;
+            margin: 0.5em 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        form button {
+            padding: 1em 2em;
+            background: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: #333;
+        }
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 2em;
+            text-align: center;
+        }
+        .contact-info {
+            margin-bottom: 1em;
+        }
+        .social-media a {
+            margin: 0 0.5em;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .social-media a:hover {
+            color: #d1ecf1;
+        }
+
+        /* Checkout Section Styles */
+        .checkout {
+            text-align: center;
+            padding: 4em 2em;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout .cta-button {
+            background: #007bff;
+            color: #fff;
+            padding: 1em 2em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .checkout .cta-button:hover {
+            background: #0056b3;
+        }
+
+        /* About Us Section Styles */
+        .about-container {
+            width: 80%;
+            margin: 2em auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .about-container section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .about-container section h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .about-container section p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .mission, .vision {
+            background-color: #e9f7ef;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Pricing Details */
+        .pricing-details {
+            padding: 4em 2em;
+            text-align: left;
+            background: #fff;
+            margin: 1em auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        .pricing-details h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 0.5em;
+        }
+        .pricing-details h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 1em;
+        }
+        .pricing-details h5 {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 0.5em;
+        }
+        .pricing-details p {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 1em;
+            line-height: 1.6;
+        }
+        .pricing-details .btn {
+            background: #007bff;
+            color: #fff;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        .pricing-details .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Contact Us Styles */
+        .contact-container {
+            width: 80%;
+            margin: 2em auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .contact-container h2, .contact-container p, .contact-container h3, .contact-container ul, .contact-container form {
+            margin-bottom: 1em;
+        }
+        .contact-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .contact-container ul li {
+            margin-bottom: 0.5em;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+        .success-message, .error-message {
+            display: none;
+            margin-top: 1em;
+            color: green;
+        }
+        .error-message {
+            color: red;
+        }
+
+        /* Service Section */
+        .service {
+            background: #f9f9f9;
+            padding: 1em;
+            margin-bottom: 1em;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .service-details {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .info-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-left: 0.5em;
+        }
+        .form-section {
+            margin-bottom: 1em;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .message-label {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">CareMan</div>
+        <nav>
+            <ul>
+                <li><a href="#index">Index</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#purchase">Purchase</a></li>
+                <li><a href="#wallet">Digital Wallet</a></li>
+                <li><a href="#checkout">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="index" class="hero">
+        <h1>Welcome to CareMan's Finance</h1>
+        <p>Your trusted partner in managing healthcare finances.</p>
+        <a href="#services" class="cta-button">Learn More</a>
+        <a href="#get-started" class="cta-button">Get Started</a>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service" tabindex="0">
+            <h2>Medical Billing Assistance <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to toggle details">&#9432;</span></h2>
+            <div class="service-details">
+                <p>Our Medical Billing Assistance service ensures that your medical bills are accurate and submitted on time. We handle all the paperwork and follow up with healthcare providers and insurance companies to ensure that your bills are processed efficiently and correctly.</p>
+                <a href="medical_ass.html" class="btn btn-primary">Go to Medical Assistance Billing</a>
+            </div>
+        </div>
+        
+        <div class="service" tabindex="0">
+            <h2>Patient Financing Options <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to toggle details">&#9432;</span></h2>
+            <div class="service-details">
+                <p>We offer a variety of patient financing options to help you manage the cost of medical treatments. Whether you need a payment plan, low-interest loans, or other financing solutions, we are here to help you find the best option for your financial situation.</p>
+                <a href="patient_finance.html" class="btn btn-primary">Go to Patient Financing Options</a>
+            </div>
+        </div>
+        
+        <div class="service" tabindex="0">
+            <h2>Insurance Claim Management <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to toggle details">&#9432;</span></h2>
+            <div class="service-details">
+                <p>Our Insurance Claim Management service assists you in filing and managing your insurance claims. We ensure that all necessary documentation is submitted, follow up with insurance companies, and work to resolve any issues that may arise, helping you get the coverage you are entitled to.</p>
+                <a href="insurance_claim.html" class="btn btn-primary">Go to Insurance Claim Management</a>
+            </div>
+        </div>
+        
+        <div class="service" tabindex="0">
+            <h2>Patient Eligibility Verification <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to toggle details">&#9432;</span></h2>
+            <div class="service-details">
+                <p>Our Patient Eligibility Verification service ensures that you receive the medical benefits you are entitled to by verifying your insurance coverage and benefits before any services are rendered, helping you avoid unexpected costs.</p>
+                <a href="patient_elig.html" class="btn btn-primary">Go to Patient Eligibility Verification</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-details">
+        <h1>Details about Basic Health Insurance Plan</h1>
+        <h3>Price : $10/month</h3>
+        <h5>What does it have ?</h5>
+        <p>This plan covers basic health insurance needs, including routine check-ups, emergency services, and some prescription medications. It's designed for individuals who need affordable and straightforward health coverage.</p>
+        <a class="btn" href="#pricing">Back</a>
+    </section>
+    <section id="pricing" class="pricing-details">
+        <h1>Details about Premium Health Insurance Plan</h1>
+        <h3>Price : $30/month</h3>
+        <h5>What does it have ?</h5>
+        <p>This plan offers more comprehensive coverage than the basic plan, including additional specialist visits, more extensive prescription coverage, and lower copayments and deductibles.</p>
+        <a class="btn" href="#pricing">Back</a>
+    </section>
+    <section id="pricing" class="pricing-details">
+        <h1>Details about Ultimate Health Insurance Plan</h1>
+        <h3>Price : $50/month</h3>
+        <h5>What does it have ?</h5>
+        <p>This plan covers an extensive range of medical services and offers additional benefits to ensure peace of mind and financial security in the event of health issues.</p>
+        <a class="btn" href="#pricing">Back</a>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <section>
+                <h2>Our History</h2>
+                <p>Healthcare finance was founded with the vision to make healthcare expenses easier to manage. Over the years, we have grown to become a trusted partner for thousands of users, providing innovative solutions for health savings accounts, insurance claims processing, and medical bill payments.</p>
+            </section>
+            <section class="mission">
+                <h2>Our Mission</h2>
+                <p>Our mission is to simplify healthcare expenses for everyone. We aim to provide a secure and user-friendly platform that helps users manage their health-related finances efficiently and effectively.</p>
+            </section>
+            <section class="vision">
+                <h2>Our Vision</h2>
+                <p>Our vision is to be the leading digital wallet platform for healthcare expenses, known for our reliability, security, and exceptional user experience.</p>
+            </section>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or require further assistance, please feel free to contact us using the information below or by submitting your enquiry through the contact form.</p>
+        <h3>Contact Information</h3>
+        <p><strong>Phone Numbers:</strong></p>
+        <ul>
+            <li>Main Office: +65 9876 5432</li>
+            <li>Customer Support: +65 9123 4567</li>
+        </ul>
+        <p><strong>Email Addresses:</strong></p>
+        <ul>
+            <li>General Inquiries: info@healthcarefinance.com</li>
+            <li>Customer Support: support@healthcarefinance.com</li>
+        </ul>
+        <p><strong>Physical Address:</strong></p>
+        <ul>
+            <li>Healthcare Finance Inc.</li>
+            <li>123 Finance St.</li>
+            <li>Health City, 123456</li>
+        </ul>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093746!2d144.9537363153167!3d-37.81627974202159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5773e2c0fbd7c74!2s123+Finance+St%2C+Health+City%2C+123456!5e0!3m2!1sen!2sus!4v1614392601765!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <h3>Contact Form</h3>
+        <form id="contact-form" action="/submit_contact_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" aria-required="true" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" aria-required="true" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" class="form-control" aria-required="true" required>
+            </div>
+            <div class="form-group">
+                <label for="message" class="message-label">Message:</label>
+                <textarea id="message" name="message" class="form-control" rows="4" aria-required="true" required></textarea>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <div class="success-message">Thank you for your message. We will get back to you shortly.</div>
+        <div class="error-message">There was an error submitting your message. Please try again.</div>
+    </section>
+
+    <!-- Digital Wallet Section -->
+    <section id="wallet" class="wallet">
+        <h2>Digital Wallet</h2>
+        <img src="" alt="Digital Wallet">
+        <p>Secure and convenient digital wallet solutions for managing your healthcare payments.</p>
+        <a href="#digital-wallet-page" class="cta-button">Go to Digital Wallet</a>
+        <p>Our digital wallet offers:</p>
+        <ul>
+            <li>Secure storage of your healthcare payment information.</li>
+            <li>Easy access to transaction history.</li>
+            <li>Integration with major healthcare providers.</li>
+            <li>Instant notifications for transactions.</li>
+        </ul>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="checkout">
+        <h2>Checkout</h2>
+        <button id="checkoutButton" class="cta-button">Checkout</button>
+        <p id="paymentMessage" style="display:none;">You have successfully paid for the product!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <p>Email: info@gmail.com</p>
+            <p>Phone: +123-456-7890</p>
+        </div>
+        <div class="social-media">
+            <a href="#"><i class="icon-facebook"></i></a>
+            <a href="#"><i class="icon-twitter"></i></a>
+            <a href="#"><i class="icon-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            // Simulate payment process
+            setTimeout(function() {
+                document.getElementById('paymentMessage').style.display = 'block';
+            }, 1000); // Simulate a delay of 1 second for payment processing
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var services = document.querySelectorAll('.service');
+
+            services.forEach(function (service) {
+                service.addEventListener('click', function () {
+                    var details = this.querySelector('.service-details');
+                    details.classList.toggle('show');
+                });
+
+                service.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        var details = this.querySelector('.service-details');
+                        details.classList.toggle('show');
+                    }
+                });
+            });
+
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Claim information submitted successfully.');
+            window.location.href = 'services.html';
+        });
+
+        document.getElementById('billing-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Billing information submitted successfully.');
+            window.location.href = 'services.html';
+        });
+
+        document.getElementById('eligibility-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Eligibility information submitted successfully.');
+            window.location.href = 'services.html';
+        });
+
+        document.getElementById('financing-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Financing information submitted successfully.');
+            window.location.href = 'services.html';
+        });
+    </script>
+</body>
+</html>
